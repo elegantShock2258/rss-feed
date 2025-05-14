@@ -7,16 +7,16 @@ plugins {
 
 android {
     namespace 'com.niilopoutanen.rss_feed'
-    compileSdk 34
+    compileSdk 35
     ndkVersion "25.2.9519653"
 
     defaultConfig {
         applicationId "com.niilopoutanen.rss_feed"
-        resourceConfigurations += ["en", "fi", "tr"]
+        resourceConfigurations += ["en", "fi", "tr", "ru"]
         minSdk 26
-        targetSdk 34
-        versionCode 36
-        versionName "2.3.5.1"
+        targetSdk 35
+        versionCode 37
+        versionName "2.3.7"
         ndk {
             debugSymbolLevel 'FULL'
         }
@@ -25,7 +25,7 @@ android {
     buildTypes {
         release {
             debuggable false
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             firebaseCrashlytics {
                 mappingFileUploadEnabled true
@@ -65,7 +65,7 @@ dependencies {
     implementation 'androidx.palette:palette:1.0.0'
     implementation ("androidx.webkit:webkit:1.11.0")
 
-    implementation 'com.google.android.gms:play-services-ads:23.0.0'
+    implementation 'com.google.android.gms:play-services-ads:23.1.0'
     implementation 'com.google.android.material:material:1.12.0'
     implementation platform('com.google.firebase:firebase-bom:33.1.1')
 
