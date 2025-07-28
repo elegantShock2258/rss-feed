@@ -776,7 +776,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/element_background"
+                android:background="@drawable/m3_expressive_leaf"
                 android:padding="10dp">
 
                 <View
@@ -790,7 +790,7 @@
                 android:id="@+id/settings_createIssue"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/element_background"
+                android:background="@drawable/m3_expressive_leaf"
                 android:padding="10dp">
 
                 <View

@@ -156,9 +156,6 @@ public class PreferencesManager {
         if (locale.startsWith("fi")) {
             userLocale = Category.Country.FI;
         }
-        else if (locale.startsWith("tr")) {
-            userLocale = Category.Country.TR;
-        }
         else {
             userLocale = Category.Country.EN;
         }
