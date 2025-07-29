@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/content_header"
                 android:textColor="@color/textPrimary"
-                android:textSize="35sp"
+                android:textSize="30sp"
                 app:fontFamily="@font/inter_black" />
 
             <LinearLayout

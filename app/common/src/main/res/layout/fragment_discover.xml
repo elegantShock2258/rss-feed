@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/discover_header"
                 android:textColor="@color/textPrimary"
-                android:textSize="35sp"
+                android:textSize="30sp"
                 app:fontFamily="@font/inter_black" />
         </RelativeLayout>
         <LinearLayout

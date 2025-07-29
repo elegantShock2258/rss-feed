@@ -190,7 +190,6 @@ public class DiscoverFragment extends Fragment implements View.OnClickListener {
             return WindowInsetsCompat.CONSUMED;
         });
 
-        PreferencesManager.setHeader(context, rootView.findViewById(R.id.discover_header));
 
         progressBar = rootView.findViewById(R.id.discover_progress);
 
