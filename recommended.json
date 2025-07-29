@@ -20,15 +20,6 @@
         },
         {
             "language": "en",
-            "description": "Live news, investigations, opinion, photos and video by the journalists of The New York Times from more than 150 countries around the world.",
-            "title": "The New York Times",
-            "feedId": "feed/https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml",
-            "website": "https://nytimes.com",
-            "coverUrl": "https://storage.googleapis.com/site-assets/2IAKmisI-skG5eJD6FDanzV4JS35tHTM1ILbuVimBro_cover-170f4ed8fad",
-            "visualUrl": "https://raw.githubusercontent.com/niilopoutanen/RSS-Feed/app-resources/recommended-icons/New%20York%20Times.jpg"
-        },
-        {
-            "language": "en",
             "description": "Reporting on the business of technology, startups, venture capital funding, and Silicon Valley.",
             "title": "TechCrunch",
             "feedId": "feed/https://techcrunch.com/feed/",
