@@ -77,7 +77,6 @@ public class SourceFragment extends Fragment {
             return WindowInsetsCompat.CONSUMED;
         });
 
-        PreferencesManager.setHeader(context, rootView.findViewById(R.id.sources_header));
         sourcesRecyclerView = rootView.findViewById(R.id.sources_recyclerview);
 
         adapter = new SourceAdapter(null, sourcesRecyclerView, getParentFragmentManager());

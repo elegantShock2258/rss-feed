@@ -31,7 +31,6 @@ public class Header extends FeedItem{
         if(text instanceof String){
             TextView title = getContent().findViewById(R.id.feed_title);
             title.setText((String)text);
-            PreferencesManager.setHeader(context, title);
         }
 
         View menuButton = getContent().findViewById(R.id.feed_dropdown);
