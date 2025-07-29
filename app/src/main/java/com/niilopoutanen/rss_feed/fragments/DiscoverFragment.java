@@ -66,6 +66,7 @@ public class DiscoverFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             preferences = (Preferences) getArguments().getSerializable("preferences");
         }
@@ -182,13 +183,6 @@ public class DiscoverFragment extends Fragment implements View.OnClickListener {
         View rootView = inflater.inflate(R.layout.fragment_discover, container, false);
         scrollView = rootView.findViewById(R.id.discover_nestedscrollview);
 
-        ViewCompat.setOnApplyWindowInsetsListener(rootView.findViewById(R.id.discover_container), (v, windowInsets) -> {
-            Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
-            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
-            mlp.topMargin = insets.top;
-            v.setLayoutParams(mlp);
-            return WindowInsetsCompat.CONSUMED;
-        });
 
 
         progressBar = rootView.findViewById(R.id.discover_progress);
@@ -218,6 +212,17 @@ public class DiscoverFragment extends Fragment implements View.OnClickListener {
 
         activeCategory.setActive(true);
         search(activeCategory.getQuery());
+
+
+        View discoverContainer = rootView.findViewById(R.id.discover_container);
+        ViewCompat.setOnApplyWindowInsetsListener(discoverContainer, (v, windowInsets) -> {
+            Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            mlp.topMargin = insets.top;
+
+            v.setLayoutParams(mlp);
+            return WindowInsetsCompat.CONSUMED;
+        });
 
         return rootView;
     }

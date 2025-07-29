@@ -70,7 +70,7 @@ public class SourceFragment extends Fragment {
         });
 
 
-        ViewCompat.setOnApplyWindowInsetsListener(rootView.findViewById(R.id.sources_base), (v, windowInsets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(rootView.findViewById(R.id.sources_container), (v, windowInsets) -> {
             Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
             Insets cameraInsets = windowInsets.getInsets(WindowInsetsCompat.Type.displayCutout());
             ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
