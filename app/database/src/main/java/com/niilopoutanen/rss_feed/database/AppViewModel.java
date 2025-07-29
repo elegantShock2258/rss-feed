@@ -31,6 +31,9 @@ public class AppViewModel extends AndroidViewModel {
     public void updateSource(Source source){
         appRepository.insert(source);
     }
+    public void removesource(Source source){
+        appRepository.remove(source);
+    }
     public void setPostCache(List<Post> posts){
         if(posts == null || posts.isEmpty()) return;
         this.posts = posts;

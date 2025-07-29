@@ -31,4 +31,9 @@
         <item name="android:itemBackground">@color/element</item>
         <item name="android:iconTint">@color/textPrimary</item>
     </style>
+
+    <style name="RSSFeedStyle.FAB" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="colorContainer">@color/element</item>
+        <item name="colorOnContainer">?attr/colorAccent</item>
+    </style>
 </resources>

@@ -4,7 +4,7 @@
     <color name="transparent">#00FFFFFF</color>
 
     <color name="element">#ffffff</color>
-    <color name="element_pressed">@android:color/system_accent1_200</color>
+    <color name="element_pressed">#e6e6e6</color>
     <color name="element_active">@android:color/system_accent1_800</color>
     <color name="element_border">@android:color/system_accent2_200</color>
 

@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.transition.MaterialFadeThrough;
 import com.niilopoutanen.rss_feed.adapters.SourceAdapter;
 import com.niilopoutanen.rss_feed.common.PreferencesManager;
@@ -69,10 +70,13 @@ public class SourceFragment extends Fragment {
         });
 
 
-        ViewCompat.setOnApplyWindowInsetsListener(rootView.findViewById(R.id.sources_container), (v, windowInsets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(rootView.findViewById(R.id.sources_base), (v, windowInsets) -> {
             Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+            Insets cameraInsets = windowInsets.getInsets(WindowInsetsCompat.Type.displayCutout());
             ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
             mlp.topMargin = insets.top;
+            mlp.rightMargin = cameraInsets.right;
+            mlp.leftMargin = insets.left;
             v.setLayoutParams(mlp);
             return WindowInsetsCompat.CONSUMED;
         });
@@ -89,7 +93,7 @@ public class SourceFragment extends Fragment {
         itemTouchHelper.attachToRecyclerView(sourcesRecyclerView);
 
 
-        LinearLayout addBtn = rootView.findViewById(R.id.addNewButton);
+        FloatingActionButton addBtn = rootView.findViewById(R.id.addNewButton);
         addBtn.setOnClickListener(v -> openSourceDialog(null));
         return rootView;
     }

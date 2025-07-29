@@ -12,6 +12,8 @@
     <string name="goback">Takaisin</string>
     <string name="save">Tallenna</string>
     <string name="share">Jaa</string>
+    <style name="remove">Poista</style>
+
     <string name="sharepost">Jaa julkaisu</string>
     <string name="addsource">Lisää lähde</string>
     <string name="updatesource">Päivitä lähde</string>
