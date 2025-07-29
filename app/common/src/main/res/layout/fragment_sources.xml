@@ -5,38 +5,11 @@
     android:layout_height="match_parent"
     android:id="@+id/sources_base">
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/sources_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/sources_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp">
-
-            <TextView
-                android:id="@+id/sources_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/content_header"
-                android:textColor="@color/textPrimary"
-                android:textSize="30sp"
-                app:fontFamily="@font/inter_black"
-                android:layout_marginBottom="10dp"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/sources_recyclerview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:layoutAnimation="@anim/layout_animation"/>
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+        android:layoutAnimation="@anim/layout_animation"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNewButton"

@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.niilopoutanen.rss_feed.common.PreferencesManager;
 import com.niilopoutanen.rss_feed.common.R;
 import com.niilopoutanen.rss_feed.database.AppDatabase;
 import com.niilopoutanen.rss_feed.database.DatabaseThread;
@@ -34,6 +35,9 @@ public class SourceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private Context context;
     private Source tempSource;
     private final FragmentManager manager;
+
+    private final int TYPE_HEADER = 0;
+    private final int TYPE_ITEM = 1;
 
     private final Runnable undoDelete = new Runnable() {
         @Override
@@ -60,7 +64,18 @@ public class SourceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
-        return SourceItem.create(parent);
+        if(viewType == TYPE_HEADER){
+            TextView headerText = new TextView(context);
+            headerText.setText(context.getText(R.string.content_header));
+            headerText.setTextSize(30);
+            headerText.setTextColor(context.getColor(R.color.textPrimary));
+            headerText.setTypeface(ResourcesCompat.getFont(context, R.font.inter_black));
+            return new RecyclerView.ViewHolder(headerText) {};
+        }
+        else{
+            return SourceItem.create(parent);
+
+        }
     }
 
     public void updateSources(List<Source> sources) {
@@ -70,10 +85,10 @@ public class SourceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if (sources == null) {
+        if (sources == null || position == 0) {
             return;
         }
-        Source source = sources.get(position);
+        Source source = sources.get(position - 1);
         if (holder instanceof SourceItem) {
             SourceItem sourceItem = (SourceItem) holder;
             sourceItem.bindData(source, manager);
@@ -84,11 +99,17 @@ public class SourceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public int getItemCount() {
         if (sources == null) {
-            return 0;
+            return 1;
         }
-        return sources.size();
+        return sources.size() + 1;
     }
 
+
+    @Override
+    public int getItemViewType(int position) {
+        if(position == 0) return TYPE_HEADER;
+        else return TYPE_ITEM;
+    }
 
     public void removeItem(int position, DatabaseThread<Source> thread) {
         Executor executor = Executors.newSingleThreadExecutor();

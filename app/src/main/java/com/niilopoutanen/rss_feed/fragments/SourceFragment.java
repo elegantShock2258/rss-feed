@@ -68,16 +68,25 @@ public class SourceFragment extends Fragment {
                 adapter.updateSources(sources);
             }
         });
+        FloatingActionButton addBtn = rootView.findViewById(R.id.addNewButton);
 
 
-        ViewCompat.setOnApplyWindowInsetsListener(rootView.findViewById(R.id.sources_container), (v, windowInsets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(rootView.findViewById(R.id.sources_recyclerview), (v, windowInsets) -> {
             Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
             Insets cameraInsets = windowInsets.getInsets(WindowInsetsCompat.Type.displayCutout());
-            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
-            mlp.topMargin = insets.top;
-            mlp.rightMargin = cameraInsets.right;
-            mlp.leftMargin = insets.left;
-            v.setLayoutParams(mlp);
+            Insets gestureInsets = windowInsets.getInsets(WindowInsetsCompat.Type.systemGestures());
+
+            int defaultPadding = PreferencesManager.dpToPx(10, context);
+            int rightMax = maxOf(insets.right, cameraInsets.right, gestureInsets.right, defaultPadding);
+            int bottomMax = maxOf(insets.bottom, cameraInsets.bottom, gestureInsets.bottom);
+
+            v.setPadding(maxOf(insets.left, defaultPadding, cameraInsets.left), maxOf(insets.top, cameraInsets.top, gestureInsets.top), maxOf(insets.right, defaultPadding, cameraInsets.right), bottomMax);
+
+
+            ViewGroup.MarginLayoutParams fabMlb = (ViewGroup.MarginLayoutParams) addBtn.getLayoutParams();
+            fabMlb.rightMargin = rightMax;
+            fabMlb.bottomMargin = bottomMax;
+
             return WindowInsetsCompat.CONSUMED;
         });
 
@@ -93,11 +102,16 @@ public class SourceFragment extends Fragment {
         itemTouchHelper.attachToRecyclerView(sourcesRecyclerView);
 
 
-        FloatingActionButton addBtn = rootView.findViewById(R.id.addNewButton);
         addBtn.setOnClickListener(v -> openSourceDialog(null));
         return rootView;
     }
-
+    private int maxOf(int... values) {
+        int max = Integer.MIN_VALUE;
+        for (int v : values) {
+            if (v > max) max = v;
+        }
+        return max;
+    }
     public void openSourceDialog(Source source) {
         AddSourceFragment addSourceFragment = AddSourceFragment.newInstance(source);
         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
