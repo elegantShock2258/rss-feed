@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.view.ContextThemeWrapper;
 import android.view.View;
-import android.widget.PopupMenu;
+import androidx.appcompat.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.niilopoutanen.rss_feed.common.PreferencesManager;
