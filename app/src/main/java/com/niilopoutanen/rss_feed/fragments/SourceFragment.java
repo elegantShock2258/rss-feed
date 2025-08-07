@@ -1,12 +1,15 @@
 package com.niilopoutanen.rss_feed.fragments;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -80,7 +83,7 @@ public class SourceFragment extends Fragment {
             int rightMax = maxOf(insets.right, cameraInsets.right, gestureInsets.right, defaultPadding);
             int bottomMax = maxOf(insets.bottom, cameraInsets.bottom, gestureInsets.bottom);
 
-            v.setPadding(maxOf(insets.left, defaultPadding, cameraInsets.left), maxOf(insets.top, cameraInsets.top, gestureInsets.top), maxOf(insets.right, defaultPadding, cameraInsets.right), bottomMax);
+            v.setPadding(maxOf(insets.left, defaultPadding, cameraInsets.left), maxOf(insets.top, cameraInsets.top, gestureInsets.top), maxOf(insets.right, defaultPadding, cameraInsets.right), 0);
 
 
             ViewGroup.MarginLayoutParams fabMlb = (ViewGroup.MarginLayoutParams) addBtn.getLayoutParams();
@@ -95,7 +98,7 @@ public class SourceFragment extends Fragment {
         adapter = new SourceAdapter(null, sourcesRecyclerView, getParentFragmentManager());
         sourcesRecyclerView.setAdapter(adapter);
         sourcesRecyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
-        sourcesRecyclerView.addItemDecoration(new DividerItemDecoration(context, LinearLayout.VERTICAL));
+        //sourcesRecyclerView.addItemDecoration(new DividerItemDecoration(context, LinearLayout.VERTICAL));
 
         startPostponedEnterTransition();
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(adapter.new SwipeToDeleteCallback(getContext()));

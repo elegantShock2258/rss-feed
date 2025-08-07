@@ -112,11 +112,12 @@ public class SourceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     public void removeItem(int position, DatabaseThread<Source> thread) {
+        if (position == 0) return;
         Executor executor = Executors.newSingleThreadExecutor();
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                Source target = sources.get(position);
+                Source target = sources.get(position - 1);
                 AppDatabase database = AppDatabase.getInstance(context);
                 database.sourceDao().delete(target);
                 thread.complete(target);
@@ -136,10 +137,21 @@ public class SourceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
             return false;
         }
-
+        @Override
+        public int getSwipeDirs(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
+            int position = viewHolder.getBindingAdapterPosition();
+            if (position == 0) {
+                return 0; // disable swipe for header
+            }
+            return super.getSwipeDirs(recyclerView, viewHolder);
+        }
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-            int position = viewHolder.getAdapterPosition();
+            int position = viewHolder.getBindingAdapterPosition();
+            if (position == 0) {
+                notifyItemChanged(position); // reset swipe
+                return;
+            }
             removeItem(position, result -> tempSource = result);
 
             Snackbar snackbar = Snackbar.make(recyclerView, context.getString(R.string.sourceremoved), Snackbar.LENGTH_LONG);

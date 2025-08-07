@@ -54,6 +54,8 @@ public class AppViewModel extends AndroidViewModel {
         Collections.sort(l1);
         Collections.sort(l2);
 
+        if (l1.size() != l2.size()) return true;
+
         for(int i = 0; i < l1.size(); i++){
             Post post1 = l1.get(i);
             Post post2 = l2.get(i);

@@ -9,7 +9,8 @@
         android:id="@+id/sources_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layoutAnimation="@anim/layout_animation"/>
+        android:layoutAnimation="@anim/layout_animation"
+        android:clipToPadding="false"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNewButton"
