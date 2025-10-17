@@ -98,6 +98,7 @@ public class Parser {
             Log.println(Log.ERROR,"d",e.getMessage());
         }
 
+        Collections.shuffle(posts);
         return posts;
     }
 
