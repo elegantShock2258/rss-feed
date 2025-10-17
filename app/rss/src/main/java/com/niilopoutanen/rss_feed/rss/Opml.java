@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 
 import androidx.activity.result.ActivityResult;
 
@@ -19,6 +20,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.InvalidObjectException;
 import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,9 +71,18 @@ public class Opml {
                 source.title = title;
                 source.url = url;
                 source.description = description;
-                if(source.url != null && !source.url.isEmpty()){
-                    sources.add(source);
+                // test source
+                try {
+                    URL Url = new URL(url);
+                    fetchSource(Url);
+                    if(source.url != null && !source.url.isEmpty()){
+                        sources.add(source);
+                    }
+                } catch (Exception e) {
+                    // skip this sourcee
+                    Log.i("SKIPPED","Skipped source " + url);
                 }
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,7 +90,14 @@ public class Opml {
 
         return sources;
     }
+    private static void fetchSource(URL url) throws IOException {
 
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+        // Set request method
+        connection.setRequestMethod("GET");
+        connection.setInstanceFollowRedirects(true);
+    }
     public static boolean isOpml(String content) {
         if(!content.contains("<opml")){
             return false;

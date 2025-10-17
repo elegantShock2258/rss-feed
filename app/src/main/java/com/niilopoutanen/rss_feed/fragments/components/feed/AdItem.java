@@ -1,6 +1,6 @@
 package com.niilopoutanen.rss_feed.fragments.components.feed;
 
-import static com.google.android.gms.ads.nativead.NativeAdOptions.ADCHOICES_TOP_RIGHT;
+//import static com.google.android.gms.ads.nativead.NativeAdOptions.ADCHOICES_TOP_RIGHT;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -15,21 +15,21 @@ import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.palette.graphics.Palette;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdLoader;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.MediaContent;
-import com.google.android.gms.ads.nativead.NativeAd;
-import com.google.android.gms.ads.nativead.NativeAdOptions;
-import com.google.android.gms.ads.nativead.NativeAdView;
+//import com.google.android.gms.ads.AdListener;
+//import com.google.android.gms.ads.AdLoader;
+//import com.google.android.gms.ads.AdRequest;
+//import com.google.android.gms.ads.LoadAdError;
+//import com.google.android.gms.ads.MediaContent;
+//import com.google.android.gms.ads.nativead.NativeAd;
+//import com.google.android.gms.ads.nativead.NativeAdOptions;
+//import com.google.android.gms.ads.nativead.NativeAdView;
 import com.niilopoutanen.rss_feed.common.IconView;
 import com.niilopoutanen.rss_feed.common.R;
 
 import java.util.List;
 
 public class AdItem extends FeedItem{
-    NativeAdView adView;
+//    NativeAdView adView;
     CardView container;
     TextView title, desc, cta;
     IconView icon;
@@ -50,7 +50,7 @@ public class AdItem extends FeedItem{
 
     @Override
     public void bind(Object data) {
-        adView = getContent().findViewById(R.id.ad_view);
+//        adView = getContent().findViewById(R.id.ad_view);
         container = getContent().findViewById(R.id.ad_card);
         title = getContent().findViewById(R.id.ad_title);
         desc = getContent().findViewById(R.id.ad_desc);
@@ -58,58 +58,58 @@ public class AdItem extends FeedItem{
         icon = getContent().findViewById(R.id.ad_icon);
         image = getContent().findViewById(R.id.ad_image);
 
-        adView.setHeadlineView(title);
-        adView.setIconView(icon);
-        NativeAdOptions nativeAdOptions = new NativeAdOptions.Builder()
-                  .setMediaAspectRatio(NativeAdOptions.NATIVE_MEDIA_ASPECT_RATIO_LANDSCAPE)
-                  .setRequestMultipleImages(false)
-                  .setAdChoicesPlacement(ADCHOICES_TOP_RIGHT)
-                  .build();
-        final AdLoader adLoader = new AdLoader.Builder(this.context, "ca-app-pub-2347063544693669/5674529662")
-                .forNativeAd(this::displayNativeAd)
-                .withAdListener(new AdListener() {
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        super.onAdFailedToLoad(loadAdError);
-                    }
-                })
-                .withNativeAdOptions(nativeAdOptions)
-                .build();
-
-        adLoader.loadAd(new AdRequest.Builder().build());
+//        adView.setHeadlineView(title);
+//        adView.setIconView(icon);
+//        NativeAdOptions nativeAdOptions = new NativeAdOptions.Builder()
+//                  .setMediaAspectRatio(NativeAdOptions.NATIVE_MEDIA_ASPECT_RATIO_LANDSCAPE)
+//                  .setRequestMultipleImages(false)
+//                  .setAdChoicesPlacement(ADCHOICES_TOP_RIGHT)
+//                  .build();
+//        final AdLoader adLoader = new AdLoader.Builder(this.context, "ca-app-pub-2347063544693669/5674529662")
+//                .forNativeAd(this::displayNativeAd)
+//                .withAdListener(new AdListener() {
+//                    @Override
+//                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+//                        super.onAdFailedToLoad(loadAdError);
+//                    }
+//                })
+//                .withNativeAdOptions(nativeAdOptions)
+//                .build();
+//
+//        adLoader.loadAd(new AdRequest.Builder().build());
     }
 
 
-    private void displayNativeAd(NativeAd nativeAd){
-        container.setVisibility(View.VISIBLE);
-        title.setText(nativeAd.getHeadline());
-        desc.setText(nativeAd.getBody());
-        cta.setText(nativeAd.getCallToAction());
-        if(nativeAd.getIcon() != null){
-            icon.setResource(nativeAd.getIcon().getDrawable());
-        }
-
-        MediaContent mediaContent = nativeAd.getMediaContent();
-        if(mediaContent != null){
-            image.setImageDrawable(mediaContent.getMainImage());
-            BitmapDrawable bitmapDrawable = (BitmapDrawable) mediaContent.getMainImage();
-            if(bitmapDrawable == null) return;
-
-            Palette palette = Palette.from(bitmapDrawable.getBitmap()).generate();
-            Palette.Swatch dominant = palette.getDominantSwatch();
-            Palette.Swatch vibrant = palette.getVibrantSwatch();
-            if(dominant == null) return;
-
-            ConstraintLayout bottomView = getContent().findViewById(R.id.ad_bottom_container);
-            bottomView.setBackgroundColor(dominant.getRgb());
-
-            if(vibrant == null) return;
-            LinearLayout ctaButton = getContent().findViewById(R.id.ad_cta_button);
-            ctaButton.setBackgroundTintList(ColorStateList.valueOf(vibrant.getRgb()));
-
-        }
-
-
-
-    }
+//    private void displayNativeAd(NativeAd nativeAd){
+//        container.setVisibility(View.VISIBLE);
+//        title.setText(nativeAd.getHeadline());
+//        desc.setText(nativeAd.getBody());
+//        cta.setText(nativeAd.getCallToAction());
+//        if(nativeAd.getIcon() != null){
+//            icon.setResource(nativeAd.getIcon().getDrawable());
+//        }
+//
+//        MediaContent mediaContent = nativeAd.getMediaContent();
+//        if(mediaContent != null){
+//            image.setImageDrawable(mediaContent.getMainImage());
+//            BitmapDrawable bitmapDrawable = (BitmapDrawable) mediaContent.getMainImage();
+//            if(bitmapDrawable == null) return;
+//
+//            Palette palette = Palette.from(bitmapDrawable.getBitmap()).generate();
+//            Palette.Swatch dominant = palette.getDominantSwatch();
+//            Palette.Swatch vibrant = palette.getVibrantSwatch();
+//            if(dominant == null) return;
+//
+//            ConstraintLayout bottomView = getContent().findViewById(R.id.ad_bottom_container);
+//            bottomView.setBackgroundColor(dominant.getRgb());
+//
+//            if(vibrant == null) return;
+//            LinearLayout ctaButton = getContent().findViewById(R.id.ad_cta_button);
+//            ctaButton.setBackgroundTintList(ColorStateList.valueOf(vibrant.getRgb()));
+//
+//        }
+//
+//
+//
+//    }
 }

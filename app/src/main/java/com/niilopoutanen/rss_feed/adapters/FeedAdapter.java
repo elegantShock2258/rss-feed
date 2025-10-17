@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.analytics.FirebaseAnalytics;
+//import com.google.firebase.analytics.FirebaseAnalytics;
 import com.niilopoutanen.rss_feed.common.PreferencesManager;
 import com.niilopoutanen.rss_feed.common.R;
 import com.niilopoutanen.rss_feed.common.models.Preferences;
@@ -109,7 +109,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedItem.ViewHolder> imple
 
         Bundle params = new Bundle();
         params.putString("query", query);
-        FirebaseAnalytics.getInstance(context).logEvent("search_feed", params);
+//        FirebaseAnalytics.getInstance(context).logEvent("search_feed", params);
 
         notifyDataSetChanged();
     }

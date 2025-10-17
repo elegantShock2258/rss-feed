@@ -22,7 +22,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.transition.MaterialFadeThrough;
 import com.google.android.material.transition.MaterialSharedAxis;
-import com.google.firebase.analytics.FirebaseAnalytics;
+//import com.google.firebase.analytics.FirebaseAnalytics;
 import com.niilopoutanen.rss_feed.adapters.FeedAdapter;
 import com.niilopoutanen.rss_feed.common.PreferencesManager;
 import com.niilopoutanen.rss_feed.common.R;
@@ -126,7 +126,7 @@ public class FeedFragment extends Fragment {
 
         Bundle params = new Bundle();
         params.putString("source_count", String.valueOf(sources.size()));
-        FirebaseAnalytics.getInstance(context).logEvent("load_feed", params);
+//        FirebaseAnalytics.getInstance(context).logEvent("load_feed", params);
     }
 
     private void init() {

@@ -72,7 +72,7 @@ import androidx.lifecycle.Observer;
 import com.google.android.material.slider.Slider;
 import com.google.android.material.transition.MaterialFadeThrough;
 import com.google.android.material.transition.MaterialSharedAxis;
-import com.google.firebase.crashlytics.FirebaseCrashlytics;
+//import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.niilopoutanen.rss_feed.BuildConfig;
 import com.niilopoutanen.rss_feed.activities.DebugActivity;
 import com.niilopoutanen.rss_feed.common.PreferencesManager;
@@ -138,7 +138,7 @@ public class SettingsFragment extends Fragment {
                                 }
                             } catch (IOException e) {
                                 Toast.makeText(context, R.string.error_export_sources, Toast.LENGTH_SHORT).show();
-                                FirebaseCrashlytics.getInstance().recordException(e);
+//                                FirebaseCrashlytics.getInstance().recordException(e);
                             }
                         }
                     });
