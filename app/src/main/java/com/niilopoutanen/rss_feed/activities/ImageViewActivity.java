@@ -26,7 +26,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.palette.graphics.Palette;
 
-import com.google.firebase.analytics.FirebaseAnalytics;
+//import com.google.firebase.analytics.FirebaseAnalytics;
 import com.niilopoutanen.rss_feed.common.PreferencesManager;
 import com.niilopoutanen.rss_feed.common.R;
 import com.niilopoutanen.rss_feed.common.models.Preferences;
@@ -86,7 +86,7 @@ public class ImageViewActivity extends AppCompatActivity {
 
         Bundle params = new Bundle();
         params.putString("url", url);
-        FirebaseAnalytics.getInstance(this).logEvent("view_image", params);
+//        FirebaseAnalytics.getInstance(this).logEvent("view_image", params);
 
         LinearLayout saveBtn = findViewById(R.id.saveimg);
         saveBtn.setOnClickListener(v -> fetchFile());

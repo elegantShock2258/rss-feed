@@ -23,7 +23,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.transition.MaterialSharedAxis;
-import com.google.firebase.analytics.FirebaseAnalytics;
+//import com.google.firebase.analytics.FirebaseAnalytics;
 import com.niilopoutanen.rss_feed.common.R;
 import com.niilopoutanen.rss_feed.database.AppViewModel;
 import com.niilopoutanen.rss_feed.parser.IconFinder;
@@ -129,7 +129,7 @@ public class AddSourceFragment extends Fragment {
         Bundle params = new Bundle();
         params.putString("url", source.url);
         params.putString("source_name", source.title);
-        FirebaseAnalytics.getInstance(context).logEvent("add_source", params);
+//        FirebaseAnalytics.getInstance(context).logEvent("add_source", params);
 
         if(appViewModel != null){
             appViewModel.updateSource(source);

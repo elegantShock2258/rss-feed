@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.transition.MaterialFadeThrough;
-import com.google.firebase.crashlytics.FirebaseCrashlytics;
+//import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.niilopoutanen.rss_feed.activities.SearchActivity;
 import com.niilopoutanen.rss_feed.adapters.DiscoverCategoryAdapter;
 import com.niilopoutanen.rss_feed.adapters.DiscoverResultAdapter;
@@ -140,7 +140,7 @@ public class DiscoverFragment extends Fragment implements View.OnClickListener {
                 List<FeedResult> results = FeedResult.parseResult(new JSONObject(result));
                 callBack.onResult(results);
             } catch (Exception e) {
-                FirebaseCrashlytics.getInstance().recordException(e);
+//                FirebaseCrashlytics.getInstance().recordException(e);
             }
 
         });
@@ -171,7 +171,7 @@ public class DiscoverFragment extends Fragment implements View.OnClickListener {
                 results.addAll(FeedResult.parseResult(new JSONObject(result)));
             }
         } catch (Exception e) {
-            FirebaseCrashlytics.getInstance().recordException(e);
+//            FirebaseCrashlytics.getInstance().recordException(e);
         }
 
         return results;

@@ -25,7 +25,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.firebase.analytics.FirebaseAnalytics;
+//import com.google.firebase.analytics.FirebaseAnalytics;
 import com.niilopoutanen.rss_feed.common.PreferencesManager;
 import com.niilopoutanen.rss_feed.common.R;
 import com.niilopoutanen.rss_feed.common.models.Preferences;
@@ -103,7 +103,7 @@ public class ArticleActivity extends AppCompatActivity {
         Bundle params = new Bundle();
         params.putString("url", post.link);
         params.putString("source_name", post.title);
-        FirebaseAnalytics.getInstance(this).logEvent("read_article", params);
+//        FirebaseAnalytics.getInstance(this).logEvent("read_article", params);
     }
 
     private void initializeBase() {
@@ -172,7 +172,7 @@ public class ArticleActivity extends AppCompatActivity {
             Bundle params = new Bundle();
             params.putString("url", post.link);
             params.putString("source_name", post.title);
-            FirebaseAnalytics.getInstance(this).logEvent("share_article", params);
+//            FirebaseAnalytics.getInstance(this).logEvent("share_article", params);
 
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
